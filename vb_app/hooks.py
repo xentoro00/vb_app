@@ -23,10 +23,25 @@ app_license = "mit"
 
 # Includes in <head>
 # ------------------
+fixtures = [
+    # Export ANY Custom Field that belongs to vb_app (This fixes Letter Head AND Company junk)
+    {"dt": "Custom Field", "filters": [["module", "=", "vb_app"]]},
 
+    # Export ANY Property Setter that belongs to vb_app
+    {"dt": "Property Setter", "filters": [["module", "=", "vb_app"]]}
+]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/vb_app/css/vb_app.css"
-# app_include_js = "/assets/vb_app/js/vb_app.js"
+app_include_js = [
+    "/assets/vb_app/js/data_exporter_override.js", 
+    "/assets/vb_app/js/custom_request.js", 
+    "/assets/vb_app/js/report_override.js",
+]
+
+override_whitelisted_methods = {
+    "frappe.desk.query_report.run": "vb_app.report_handlers.secure_run_report"
+}
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/vb_app/css/vb_app.css"
@@ -43,7 +58,9 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Company": "public/js/company_override.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -136,15 +153,15 @@ app_license = "mit"
 # Document Events
 # ---------------
 # Hook on document methods and events
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
-
+doc_events = {
+    "*": {
+        # This adds your check to every document write
+        "on_update": "vb_app.company_permission.check_company_permission",
+        "on_submit": "vb_app.company_permission.check_company_permission",
+        "on_cancel": "vb_app.company_permission.check_company_permission",
+        "on_trash":  "vb_app.company_permission.check_company_permission",
+    }
+}
 # Scheduled Tasks
 # ---------------
 
