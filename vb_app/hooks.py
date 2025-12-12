@@ -100,7 +100,10 @@ doctype_js = {
 # ------------
 
 # before_install = "vb_app.install.before_install"
-# after_install = "vb_app.install.after_install"
+after_install = [
+    "vb_app.setup_company.run",
+    "vb_app.setup_permissions.run"
+]
 
 # Uninstallation
 # ------------
@@ -154,6 +157,12 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 doc_events = {
+    "User": {
+        "after_insert": "vb_app.user_automation.auto_create_permission"
+    },
+    "Company": {
+        "after_insert": "vb_app.company_automation.auto_create_letterhead"
+    },
     "*": {
         # This adds your check to every document write
         "on_update": "vb_app.company_permission.check_company_permission",
