@@ -24,11 +24,8 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 fixtures = [
-    # Export ANY Custom Field that belongs to vb_app (This fixes Letter Head AND Company junk)
-    {"dt": "Custom Field", "filters": [["module", "=", "vb_app"]]},
-
-    # Export ANY Property Setter that belongs to vb_app
-    {"dt": "Property Setter", "filters": [["module", "=", "vb_app"]]}
+    {"dt": "Custom Field", "filters": [["module", "=", "Vertex Bytes"]]},
+    {"dt": "Property Setter", "filters": [["module", "=", "Vertex Bytes"]]}
 ]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/vb_app/css/vb_app.css"
@@ -102,7 +99,9 @@ doctype_js = {
 # before_install = "vb_app.install.before_install"
 after_install = [
     "vb_app.setup_company.run",
-    "vb_app.setup_permissions.run"
+    "vb_app.setup_permissions.run",
+    "vb_app.apply_property_setters.run",
+    "vb_app.setup_coa.run"
 ]
 
 # Uninstallation

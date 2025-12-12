@@ -1,0 +1,681 @@
+{
+  "country_code": "XK",
+  "name": "Kosova - Chart of Accounts",
+  "is_active": "Yes",
+  "tree": {
+    "Jashte bilancore": {
+      "root_type": "Expense",
+      "account_number": "80000",
+      "Zërat jashtë bilancorë": {
+        "account_number": "89000",
+        "Shpenzimet tatimit ne fitim": {
+          "account_number": "890000",
+          "account_type": "Tax"
+        },
+        "Te hyrat nga granti": {
+          "account_number": "810000",
+          "account_type": "Income Account"
+        },
+        "Shpenzimet e grantiti - amortizimi": {
+          "account_number": "820000",
+          "account_type": "Depreciation"
+        },
+        "Shpenzimet e papranuara": {
+          "account_number": "880000",
+          "account_type": "Expense Account"
+        }
+      }
+    },
+    "Kapitali": {
+      "root_type": "Equity",
+      "account_number": "30000",
+      "Ekuiteti": {
+        "account_number": "30010",
+        "Kapitali I pronareve": {
+          "account_number": "300000",
+          "account_type": "Equity"
+        },
+        "Rivleresimet": {
+          "account_number": "350000",
+          "account_type": "Equity"
+        }
+      },
+      "Fitimi i akumuluar": {
+        "account_number": "31000",
+        "Fitimi i mbajtur nga viti i kaluar": {
+          "account_number": "310000",
+          "account_type": "Equity"
+        },
+        "Fitimi neto": {
+          "account_number": "320000",
+          "account_type": "Equity"
+        }
+      },
+      "Terheqjet dhe deponimet": {
+        "account_number": "33000",
+        "Terheqjet e pronarit": {
+          "account_number": "330000",
+          "account_type": "Equity"
+        },
+        "Dividentat": {
+          "account_number": "340000",
+          "account_type": "Equity"
+        }
+      }
+    },
+    "Kostoja": {
+      "root_type": "Expense",
+      "account_number": "50000",
+      "Kostoja e shitjes": {
+        "account_number": "50010",
+        "Kosto e shitjes se mallrave": {
+          "account_number": "500000",
+          "account_type": "Cost of Goods Sold"
+        },
+        "Kosto e sherbimeve": {
+          "account_number": "510000",
+          "account_type": "Cost of Goods Sold"
+        },
+        "Kosto e transportit": {
+          "account_number": "520000",
+          "account_type": "Cost of Goods Sold"
+        },
+        "Kosto e shitjeve tjera": {
+          "account_number": "530000",
+          "account_type": "Cost of Goods Sold"
+        }
+      }
+    },
+    "Pasuria": {
+      "root_type": "Asset",
+      "account_number": "10000",
+      "Paraja e gatshme": {
+        "account_number": "10010",
+        "Arka kryesore": {
+          "account_number": "100000",
+          "account_type": "Cash"
+        },
+        "NLB Prishtina": {
+          "account_number": "102000",
+          "account_type": "Bank"
+        },
+        "Raiffeisen Bank": {
+          "account_number": "102100",
+          "account_type": "Bank"
+        },
+        "Procredit Bank": {
+          "account_number": "102200",
+          "account_type": "Bank"
+        },
+        "Banka Ekonomike": {
+          "account_number": "102300",
+          "account_type": "Bank"
+        },
+        "BpB": {
+          "account_number": "102400",
+          "account_type": "Bank"
+        },
+        "BKT Prishtina": {
+          "account_number": "102500",
+          "account_type": "Bank"
+        },
+        "TEB Banka": {
+          "account_number": "102600",
+          "account_type": "Bank"
+        },
+        "Arka konto kalimtare": {
+          "account_number": "101000",
+          "account_type": "Cash"
+        },
+        "Arkat tjera": {
+          "account_number": "100990",
+          "account_type": "Cash"
+        },
+        "Ish Bankasi": {
+          "account_number": "102700",
+          "account_type": "Bank"
+        },
+        "NLB POSS": {
+          "account_number": "103000",
+          "account_type": "Bank"
+        },
+        "RBKO POSS": {
+          "account_number": "103100",
+          "account_type": "Bank"
+        },
+        "PCB POSS": {
+          "account_number": "103200",
+          "account_type": "Bank"
+        },
+        "BE POSS": {
+          "account_number": "103300",
+          "account_type": "Bank"
+        },
+        "BPB POSS": {
+          "account_number": "103400",
+          "account_type": "Bank"
+        },
+        "BKT POSS": {
+          "account_number": "103500",
+          "account_type": "Bank"
+        },
+        "TEB POSS": {
+          "account_number": "103600",
+          "account_type": "Bank"
+        },
+        "ISH POSS": {
+          "account_number": "103700",
+          "account_type": "Bank"
+        },
+        "NLB USD": {
+          "account_number": "104000",
+          "account_type": "Bank"
+        },
+        "RBKO USD": {
+          "account_number": "104100",
+          "account_type": "Bank"
+        },
+        "PCB USD": {
+          "account_number": "104200",
+          "account_type": "Bank"
+        },
+        "BE USD": {
+          "account_number": "104300",
+          "account_type": "Bank"
+        },
+        "BPB USD": {
+          "account_number": "104400",
+          "account_type": "Bank"
+        },
+        "BKT USD": {
+          "account_number": "104500",
+          "account_type": "Bank"
+        },
+        "TEB USD": {
+          "account_number": "104600",
+          "account_type": "Bank"
+        },
+        "ISH USD": {
+          "account_number": "104700",
+          "account_type": "Bank"
+        },
+        "Paraja e bllokuar Garancion": {
+          "account_number": "105000",
+          "account_type": "Bank"
+        }
+      },
+      "Blerës": {
+        "account_number": "11000",
+        "Llogaritë e arkëtueshme - Bleres": {
+          "account_number": "110000",
+          "account_type": "Receivable"
+        },
+        "Provizionimi i llogarive te arketueshme": {
+          "account_number": "111000",
+          "account_type": "Current Asset"
+        }
+      },
+      "Mallërat": {
+        "account_number": "12000",
+        "Malli": {
+          "account_number": "120000",
+          "account_type": "Stock"
+        },
+        "Malli lënda e parë": {
+          "account_number": "121000",
+          "account_type": "Stock"
+        },
+        "Malli prodhimet e gatshme": {
+          "account_number": "123000",
+          "account_type": "Stock"
+        }
+      },
+      "Parapagimet e dhëna": {
+        "account_number": "14000",
+        "Avanset e dhëna - Mall": {
+          "account_number": "140000",
+          "account_type": "Current Asset"
+        },
+        "Avanset e dhëna - Qera": {
+          "account_number": "141000",
+          "account_type": "Current Asset"
+        },
+        "Huazimet e dhëna": {
+          "account_number": "142000",
+          "account_type": "Current Asset"
+        }
+      },
+      "Pasuritë vijuese": {
+        "account_number": "13000",
+        "Parapagimet ne tremujorsha": {
+          "account_number": "145000",
+          "account_type": "Current Asset"
+        },
+        "TVSH - Blerje": {
+          "account_number": "130000",
+          "account_type": "Tax"
+        }
+      },
+      "Pasuritë fikse": {
+        "account_number": "15000",
+        "Patentat dhe te drejtat tjera": {
+          "account_number": "150000",
+          "account_type": "Fixed Asset"
+        },
+        "Toka": {
+          "account_number": "160000",
+          "account_type": "Fixed Asset"
+        },
+        "Asetet Kat I (5%)": {
+          "account_number": "161000",
+          "account_type": "Fixed Asset"
+        },
+        "Asetet Kat II (20%)": {
+          "account_number": "162000",
+          "account_type": "Fixed Asset"
+        },
+        "Asetet Kat III (10%)": {
+          "account_number": "164000",
+          "account_type": "Fixed Asset"
+        },
+        "Asetet - Granti": {
+          "account_number": "165000",
+          "account_type": "Fixed Asset"
+        },
+        "Asetet kat II (20%) Grup": {
+          "account_number": "163000",
+          "account_type": "Fixed Asset"
+        }
+      },
+      "Zhvleresimet e akumuluara": {
+        "account_number": "17000",
+        "Amortizimi i te drejtave": {
+          "account_number": "170000",
+          "account_type": "Accumulated Depreciation"
+        },
+        "Zhvleresimi i Aseteve 5%": {
+          "account_number": "181000",
+          "account_type": "Accumulated Depreciation"
+        },
+        "Zhvleresimi i Aseteve 20%": {
+          "account_number": "182000",
+          "account_type": "Accumulated Depreciation"
+        },
+        "Zhvleresimi i Aseteve 20% Grup": {
+          "account_number": "183000",
+          "account_type": "Accumulated Depreciation"
+        },
+        "Zhvleresimi i asesteve grant": {
+          "account_number": "185000",
+          "account_type": "Accumulated Depreciation"
+        },
+        "Zhvleresimi i Aseteve 10%": {
+          "account_number": "184000",
+          "account_type": "Accumulated Depreciation"
+        }
+      },
+      "Pasuritë tjera fikse": {
+        "account_number": "19500",
+        "Mjetet tjera jo-rrjedhëse": {
+          "account_number": "195000",
+          "account_type": "Fixed Asset"
+        },
+        "Pasurite e paprekshme": {
+          "account_number": "15010",
+          "account_type": "Fixed Asset"
+        }
+      }
+    },
+    "Shpenzimet": {
+      "root_type": "Expense",
+      "account_number": "60000",
+      "Shpenzimet operuese": {
+        "account_number": "60010",
+        "Shpenzimet e zyres": {
+          "account_number": "600000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e rrymes": {
+          "account_number": "603000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e pastrimit": {
+          "account_number": "604000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e derivateve": {
+          "account_number": "610000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e transportimit": {
+          "account_number": "612000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e inspektimit ne kufi": {
+          "account_number": "615000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e kredive": {
+          "account_number": "802000",
+          "account_type": "Expense Account"
+        },
+        "Fitimi/humbja në shitjen e mjeteve": {
+          "account_number": "900000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e internetit": {
+          "account_number": "601000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e telefonit": {
+          "account_number": "602000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e terminalit": {
+          "account_number": "613000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e fitosanitarisë": {
+          "account_number": "614000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e pagave": {
+          "account_number": "620000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e kontributeve pensionale": {
+          "account_number": "621000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e qirase": {
+          "account_number": "605000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e sigurimit te automjeteve": {
+          "account_number": "606000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e mirembajtjes kat I": {
+          "account_number": "630000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e mirembajtjes kat II": {
+          "account_number": "631000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e mirembajtjes kat III": {
+          "account_number": "632000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e provizioneve bankare": {
+          "account_number": "640000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet juridike dhe te auditimit": {
+          "account_number": "607000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e reklames": {
+          "account_number": "650000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e reprezantacionit": {
+          "account_number": "651000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e udhetimit jasht vendit": {
+          "account_number": "652000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e taksave komunale": {
+          "account_number": "608000",
+          "account_type": "Tax"
+        },
+        "Shpenzimet e shpedicionit": {
+          "account_number": "611000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e ujit": {
+          "account_number": "604010",
+          "account_type": "Expense Account"
+        },
+        "Donacionet": {
+          "account_number": "690000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e borxheve te keqija": {
+          "account_number": "680000",
+          "account_type": "Expense Account"
+        },
+        "Provizionimi i borxheve te keqija": {
+          "account_number": "681000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e udhetimit - transporti local": {
+          "account_number": "653000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e antarsimeve": {
+          "account_number": "623000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e dhuratave": {
+          "account_number": "691000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e sigurimit te objekteve": {
+          "account_number": "606010",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e kontabilitetit": {
+          "account_number": "607500",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e licencave": {
+          "account_number": "623100",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e parkingut": {
+          "account_number": "604020",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e ushqimit": {
+          "account_number": "654000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e keshillimeve": {
+          "account_number": "607600",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e ngritjes profesionale": {
+          "account_number": "624000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet per reklam ne gazeta": {
+          "account_number": "655000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e sigurimeve shendetsore": {
+          "account_number": "606020",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e kargos": {
+          "account_number": "616000",
+          "account_type": "Expense Account"
+        },
+        "Bonuset": {
+          "account_number": "692000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e Tenderit": {
+          "account_number": "617000",
+          "account_type": "Expense Account"
+        }
+      },
+      "Shpenzimet e zhvleresimit": {
+        "account_number": "71000",
+        "Shpenzimet e zhvleresimit kat I 5%": {
+          "account_number": "710000",
+          "account_type": "Depreciation"
+        },
+        "Shpenzimet e zhvleresimit kat II 20%": {
+          "account_number": "720000",
+          "account_type": "Depreciation"
+        },
+        "Shpenzimet e zhvleresimit kat III 10%": {
+          "account_number": "730000",
+          "account_type": "Depreciation"
+        }
+      },
+      "Shpenzimet e amortizimit": {
+        "account_number": "70000",
+        "Shpenzimet e amortizimit": {
+          "account_number": "700000",
+          "account_type": "Depreciation"
+        }
+      },
+      "Te dalurat financiare": {
+        "account_number": "80010",
+        "account_type": "Expense Account"
+      },
+      "Shpenzimet e interesit": {
+        "account_number": "80020",
+        "Shpenzimet e overdraftit": {
+          "account_number": "800000",
+          "account_type": "Expense Account"
+        },
+        "Shpenzimet e menaxhimit te kredive": {
+          "account_number": "801000",
+          "account_type": "Expense Account"
+        }
+      }
+    },
+    "Te hyrat": {
+      "root_type": "Income",
+      "account_number": "40000",
+      "Te hyrat operuese": {
+        "account_number": "40010",
+        "Te hyrat nga shitja e mallrave": {
+          "account_number": "400000",
+          "account_type": "Income Account"
+        },
+        "Te hyrat nga sherbimet": {
+          "account_number": "410000",
+          "account_type": "Income Account"
+        },
+        "Te hyrat nga transporti": {
+          "account_number": "420000",
+          "account_type": "Income Account"
+        },
+        "Zbritjet e lejuara - rabatet": {
+          "account_number": "490000",
+          "account_type": "Income Account"
+        },
+        "Te hyrat tjera": {
+          "account_number": "430000",
+          "account_type": "Income Account"
+        }
+      },
+      "Te hyrat financiare": {
+        "account_number": "80030",
+        "account_type": "Income Account"
+      }
+    },
+    "Detyrimet": {
+      "root_type": "Liability",
+      "account_number": "20000",
+      "Furnitorë": {
+        "account_number": "20010",
+        "Llogarite e pagueshme - Furnitor": {
+          "account_number": "200000",
+          "account_type": "Payable"
+        }
+      },
+      "Detyrimet rrjedhëse": {
+        "account_number": "21000",
+        "Detyrimet ndaj tatimit ne fitim": {
+          "account_number": "230000",
+          "account_type": "Tax"
+        },
+        "Stoku i pranuar por i pa-faturuar": {
+          "account_number": "232000",
+          "account_type": "Tax"
+        },
+        "Obligimet per tatim ne fitim vjetor": {
+          "account_number": "234000",
+          "account_type": "Tax"
+        },
+        "Detyrimet ndaj tatimit ne qira": {
+          "account_number": "242000",
+          "account_type": "Tax"
+        },
+        "Detyrimet ndaj doganes": {
+          "account_number": "210000",
+          "account_type": "Tax"
+        },
+        "Detyrimet ndaj akcizes": {
+          "account_number": "211000",
+          "account_type": "Tax"
+        },
+        "TVSH ne dogane": {
+          "account_number": "212000",
+          "account_type": "Tax"
+        },
+        "TVSH ne shitje": {
+          "account_number": "220000",
+          "account_type": "Tax"
+        },
+        "Detyrimi ndaj pagave": {
+          "account_number": "240000",
+          "account_type": "Current Liability"
+        },
+        "Detyrimi ndaj tatimit ne paga": {
+          "account_number": "240010",
+          "account_type": "Tax"
+        },
+        "Detyrimi ndaj kontributeve punetori": {
+          "account_number": "241000",
+          "account_type": "Current Liability"
+        },
+        "Detyrimi ndaj Kontributeve punedhenesi": {
+          "account_number": "241010",
+          "account_type": "Current Liability"
+        },
+        "Detyrimet ndaj grantit": {
+          "account_number": "260000",
+          "account_type": "Current Liability"
+        },
+        "Te hyrat e shtyera": {
+          "account_number": "280000",
+          "account_type": "Current Liability"
+        },
+        "Detyrimet ndaj overdraftiti": {
+          "account_number": "271000",
+          "account_type": "Current Liability"
+        }
+      },
+      "Parapagimet e marrura": {
+        "account_number": "25000",
+        "Detyrimet ndaj avanseve te marrura": {
+          "account_number": "250000",
+          "account_type": "Current Liability"
+        },
+        "Huazimet e marrura": {
+          "account_number": "252000",
+          "account_type": "Current Liability"
+        }
+      },
+      "Detyrimet afategjate": {
+        "account_number": "27000",
+        "Detyrimet nga kreditë afatshkurte": {
+          "account_number": "270000",
+          "account_type": "Current Liability"
+        },
+        "Detyrimet ndaj kredive afatgjate": {
+          "account_number": "290000",
+          "account_type": "Liability"
+        }
+      }
+    }
+  }
+}
