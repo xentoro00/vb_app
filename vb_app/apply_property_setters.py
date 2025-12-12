@@ -1,45 +1,39 @@
 import frappe
 
 def run():
-    """
-    Manually inserts Property Setter records to customize the Company DocType,
-    bypassing the problematic fixture synchronization mechanism.
-    """
     print("🚀 Running manual Property Setter application for Company...")
 
     properties = [
-        # Default Currency: "EUR"
+        # Standard Fields
         ("Company", "default_currency", "default", "Data", "EUR"),
-        
-        # Country: "Kosovo"
         ("Company", "country", "default", "Data", "Kosovo"),
         
-        # Create Chart Of Accounts Based On: Standard Template\nExisting Company
+        # Chart of Accounts
         ("Company", "create_chart_of_accounts_based_on", "options", "Small Text", "Standard Template\nExisting Company"),
-        
-        # FIX: Make "Create Based On" Mandatory to remove empty first option
         ("Company", "create_chart_of_accounts_based_on", "reqd", "Check", "1"),
-        
-        # FIX: Set Default to "Standard Template" explicitly
         ("Company", "create_chart_of_accounts_based_on", "default", "Data", "Standard Template"),
 
+        # --- CORRECTED SECTION TARGET: company_info ---
         # Address & Contact Collapsible: false (0)
-        ("Company", "address_and_contact", "collapsible", "Check", "0"),
+        ("Company", "company_info", "collapsible", "Check", "0"),
         
-        # Address & Contact Display Depends On (JS): empty (null)
-        ("Company", "address_and_contact", "depends_on", "Data", None),
+        # Address & Contact Display Depends On: empty (None)
+        ("Company", "company_info", "depends_on", "Data", None),
+
+        # Company Logo Hidden: false (0)
+        ("Company", "company_logo", "hidden", "Check", "0"),
+        ("Company", "company_logo", "reqd", "Check", "1"),
     ]
 
     for dt, field_name, prop, prop_type, value in properties:
         try:
-            # Delete existing property setter for a clean run
+            # Clean up old/wrong entries first
             frappe.db.delete("Property Setter", {
                 "doc_type": dt,
                 "field_name": field_name,
                 "property": prop
             })
             
-            # Insert the new property setter
             doc = frappe.get_doc({
                 "doctype": "Property Setter",
                 "doc_type": dt,
