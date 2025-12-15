@@ -35,9 +35,20 @@ def run():
 
     count = 0
     skipped = 0
+    bar_width = 40
     
-    # Simple progress bar logic
+    # Progress bar logic
     for i, dt in enumerate(doctypes):
+        # Calculate progress
+        progress = (i + 1) / total_docs
+        filled = int(bar_width * progress)
+        bar = "=" * filled + " " * (bar_width - filled)
+        percent = int(progress * 100)
+        
+        # Print bar
+        sys.stdout.write(f"\r[{bar}] {percent}%")
+        sys.stdout.flush()
+
         try:
             # 1. Safety Checks
             if dt.module in SKIP_MODULES or dt.name in SKIP_DOCTYPES:
@@ -70,16 +81,13 @@ def run():
             custom_field.insert()
             
             count += 1
-            
-            # Print progress every 10 items or at the end
-            if count % 10 == 0:
-                sys.stdout.write(f"\r   -> Added to {count} DocTypes...")
-                sys.stdout.flush()
                 
         except Exception as e:
+            # Clear line before printing error to avoid messing up the bar
+            sys.stdout.write("\033[K") 
             print(f"\n❌ Error on {dt.name}: {e}")
 
-    print(f"\r✅ Added 'company' field to {count} DocTypes. (Skipped/Existing: {skipped})")
+    print(f"\n✅ Added 'company' field to {count} DocTypes. (Skipped/Existing: {skipped})")
 
     # --- PART 2: SPECIFIC USER FIELD (Default Company) ---
     print("\n👉 Checking User DocType for 'default_company'...")
