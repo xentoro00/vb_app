@@ -20,7 +20,7 @@ def run():
     
     # DocTypes to specifically ignore for the generic 'company' field
     SKIP_DOCTYPES = [
-        "User", "Role", "Has Role", "DocType", "Module Def", "Version", 
+        "User", "Role", "Has Role", "DocType", "Module Def", "Version", "Item",
         "Error Log", "Scheduled Job Type", "Activity Log", "Patch Log"
     ]
 

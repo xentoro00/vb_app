@@ -102,6 +102,7 @@ doctype_js = {
 after_install = [
     "vb_app.setup_company.run",
     "vb_app.setup_permissions.run",
+    "vb_app.setup_item.run",
     "vb_app.apply_property_setters.run",
     "vb_app.setup_coa.run"
 ]
