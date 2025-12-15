@@ -1,4 +1,5 @@
 import frappe
+import sys
 
 def run():
     """
@@ -6,7 +7,7 @@ def run():
     2. Adds 'Default Company' Custom Field to User DocType.
     Runs automatically after the app is installed.
     """
-    print("🚀 Running Company Field Injection Script...")
+    print("\n🚀 Running Company Field Injection Script...")
 
     # --- PART 1: GENERIC COMPANY FIELD ---
     FIELD_NAME = "company"
@@ -29,23 +30,27 @@ def run():
         fields=["name", "module"]
     )
 
-    print(f"Scanning {len(doctypes)} DocTypes...")
+    total_docs = len(doctypes)
+    print(f"Scanning {total_docs} DocTypes for injection...")
 
     count = 0
-    for dt in doctypes:
+    skipped = 0
+    
+    # Simple progress bar logic
+    for i, dt in enumerate(doctypes):
         try:
             # 1. Safety Checks
             if dt.module in SKIP_MODULES or dt.name in SKIP_DOCTYPES:
+                skipped += 1
                 continue
 
             # 2. Check if field exists (either as standard or custom)
             if frappe.db.exists("DocField", {"parent": dt.name, "fieldname": FIELD_NAME}) or \
                frappe.db.exists("Custom Field", {"dt": dt.name, "fieldname": FIELD_NAME}):
+                skipped += 1
                 continue
 
             # 3. Create the Custom Field
-            print(f"Creating field for: {dt.name}")
-            
             custom_field = frappe.get_doc({
                 "doctype": "Custom Field",
                 "dt": dt.name,
@@ -65,17 +70,21 @@ def run():
             custom_field.insert()
             
             count += 1
+            
+            # Print progress every 10 items or at the end
+            if count % 10 == 0:
+                sys.stdout.write(f"\r   -> Added to {count} DocTypes...")
+                sys.stdout.flush()
                 
         except Exception as e:
-            print(f"❌ Error on {dt.name}: {e}")
+            print(f"\n❌ Error on {dt.name}: {e}")
 
-    print(f"✅ Added 'company' field to {count} DocTypes.")
+    print(f"\r✅ Added 'company' field to {count} DocTypes. (Skipped/Existing: {skipped})")
 
     # --- PART 2: SPECIFIC USER FIELD (Default Company) ---
-    print("👉 Checking User DocType for 'default_company'...")
+    print("\n👉 Checking User DocType for 'default_company'...")
     try:
         if not frappe.db.exists("Custom Field", {"dt": "User", "fieldname": "default_company"}):
-            print("Creating 'default_company' field for User...")
             user_field = frappe.get_doc({
                 "doctype": "Custom Field",
                 "dt": "User",
@@ -89,12 +98,13 @@ def run():
             })
             user_field.module = "Vertex Bytes"
             user_field.insert()
-            print("✅ 'default_company' field created on User.")
+            print("   -> Created 'default_company' field on User.")
         else:
-            print("Field 'default_company' already exists on User.")
+            print("   -> Field 'default_company' already exists on User.")
             
     except Exception as e:
         print(f"❌ Error adding field to User: {e}")
 
     frappe.db.commit()
     frappe.clear_cache()
+    print("✅ Setup Company Script Complete.\n")

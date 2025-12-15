@@ -56,7 +56,9 @@ override_whitelisted_methods = {
 
 # include js in doctype views
 doctype_js = {
-    "Company": "public/js/company_override.js"
+    "Company": "public/js/company_override.js",
+    "User": "public/js/user_override.js",
+    "Item": "public/js/item_override.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -161,7 +163,8 @@ doc_events = {
         "on_trash": "vb_app.user_automation.cleanup_permission_on_delete"
     },
     "Company": {
-        "after_insert": "vb_app.company_automation.auto_create_letterhead"
+        "after_insert": "vb_app.company_automation.auto_create_letterhead",
+        "on_trash": "vb_app.company_automation.clear_company_data_on_trash"
     },
     "Acoounting": {
         "after_insert": "vb_app.tax_automation.auto_create_tax_templates"

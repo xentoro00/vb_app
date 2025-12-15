@@ -3,7 +3,6 @@ import os
 import shutil
 
 def run():
-    print("🚀 Injecting Kosovo Chart of Accounts...")
     
     # 1. Define Paths
     # Source is inside this app (vb_app)
@@ -27,6 +26,6 @@ def run():
     try:
         # We copy it every time to ensure updates apply
         shutil.copy(source_path, dest_path)
-        print(f"✅ Copied Kosovo Chart of Accounts to ERPNext verified folder.")
+        print(f"✅ Copied Chart of Accounts to ERPNext verified folder.")
     except Exception as e:
         print(f"❌ Failed to copy chart: {e}")
