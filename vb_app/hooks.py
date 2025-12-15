@@ -157,10 +157,14 @@ after_install = [
 # Hook on document methods and events
 doc_events = {
     "User": {
-        "after_insert": "vb_app.user_automation.auto_create_permission"
+        "after_insert": "vb_app.user_automation.auto_create_permission",
+        "on_trash": "vb_app.user_automation.cleanup_permission_on_delete"
     },
     "Company": {
         "after_insert": "vb_app.company_automation.auto_create_letterhead"
+    },
+    "Acoounting": {
+        "after_insert": "vb_app.tax_automation.auto_create_tax_templates"
     },
     "*": {
         # This adds your check to every document write

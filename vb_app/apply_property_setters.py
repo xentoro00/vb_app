@@ -22,6 +22,8 @@ def run():
 
         # Company Logo Hidden: false (0)
         ("Company", "company_logo", "hidden", "Check", "0"),
+        
+        # Company Logo Required: true (1)
         ("Company", "company_logo", "reqd", "Check", "1"),
     ]
 
