@@ -13,7 +13,8 @@ def run():
     field_name = "company"
     
     existing_field = frappe.db.get_value("Custom Field", {"dt": "Item", "fieldname": field_name}, "name")
-    
+    print("existing_field")
+    print(existing_field)
     if existing_field:
         # If exists (e.g. created by old script), MOVE it and UNHIDE it
         doc = frappe.get_doc("Custom Field", existing_field)
@@ -35,6 +36,7 @@ def run():
             "hidden": 0,             # Visible
             "read_only": 1,          # Cannot be changed manually
             "no_copy": 1,
+            "reqd":1,
             "default": "",
             "module": "Vertex Bytes"
         }).insert()

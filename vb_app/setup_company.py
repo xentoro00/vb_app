@@ -101,7 +101,7 @@ def run():
                 "fieldtype": "Link",
                 "options": "Company",
                 "insert_after": "last_name", # Put it in the main section
-                "reqd": 0,                   # Optional initially
+                "reqd": 1,                   # Optional initially
                 "allow_in_quick_entry": 1
             })
             user_field.module = "Vertex Bytes"

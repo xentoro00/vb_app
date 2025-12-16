@@ -3,6 +3,7 @@ app_title = "Vertex Bytes"
 app_publisher = "Vertex Bytes Solution"
 app_description = "Vertex Bytes Solution"
 app_email = "erp@vertexbytes.net"
+required_apps = ["frappe/erpnext", "frappe/hrms"]
 app_license = "mit"
 
 # Apps
@@ -20,13 +21,15 @@ app_license = "mit"
 # 		"has_permission": "vb_app.api.permission.has_app_permission"
 # 	}
 # ]
+app_name = "vb_app"
+app_title = "Vertex Bytes App"
+app_publisher = "Vertex Bytes"
+app_description = "Custom Isolation and Reports App"
+app_email = "admin@vertexbytes.com"
+app_license = "MIT"
 
-# Includes in <head>
-# ------------------
-fixtures = [
-    {"dt": "Custom Field", "filters": [["module", "=", "Vertex Bytes"]]},
-    {"dt": "Property Setter", "filters": [["module", "=", "Vertex Bytes"]]}
-]
+# --- Asset Includes ---
+# qetu i kallxon cilat mi shti qe jan ne folderin /public
 # include js, css files in header of desk.html
 # app_include_css = "/assets/vb_app/css/vb_app.css"
 app_include_js = [
@@ -35,9 +38,66 @@ app_include_js = [
     "/assets/vb_app/js/report_override.js",
 ]
 
+# qeto jan client scripts
+# include js in doctype views
+doctype_js = {
+    "Company": "public/js/company_override.js",
+    "User": "public/js/user_override.js",
+    "Item": "public/js/item_override.js"
+}
+
+# --- Document Events (Triggers) ---
+# qeto evente ekzekutohen sa here te ndodh ndonje veprim (insert, update, delete)
+# Document Events
+# ---------------
+# Hook on document methods and events
+doc_events = {
+    "User": {
+        "after_insert": "vb_app.user_automation.auto_create_permission",
+        "on_trash": "vb_app.user_automation.cleanup_permission_on_delete"
+    },
+    "Company": {
+        "after_insert": "vb_app.company_automation.auto_create_letterhead",
+        "on_trash": "vb_app.company_automation.clear_company_data_on_trash"
+    },
+    "Account": {
+        "after_insert": "vb_app.tax_automation.auto_create_tax_templates"
+    },
+    "*": {
+        # This adds your check to every document write
+        "on_update": "vb_app.company_permission.check_company_permission",
+        "on_submit": "vb_app.company_permission.check_company_permission",
+        "on_cancel": "vb_app.company_permission.check_company_permission",
+        "on_trash":  "vb_app.company_permission.check_company_permission",
+    }
+}
+
+# --- API Overrides ---
 override_whitelisted_methods = {
     "frappe.desk.query_report.run": "vb_app.report_handlers.secure_run_report"
 }
+
+# Installation
+# ------------
+# --- Installation Hooks ---
+# qeto bahen execute sit bahet install-app vb_app, dmth veq 1 her.
+after_install = [
+    "vb_app.setup_company.run",
+    "vb_app.setup_permissions.run",
+    "vb_app.setup_item.run",
+    "vb_app.apply_property_setters.run",
+    "vb_app.setup_coa.run"
+]
+
+# Includes in <head>
+# ------------------
+# --- Fixtures (Database Exports) ---
+# fixtures jan ndryshimet ne doctype prsh nese eban mandatory ni field tani veq ja ban bench export-fixtures 
+# edhe ti qet qeto ndryshime, qekjo ish e pshtjellt pak.
+fixtures = [
+    {"dt": "Custom Field", "filters": [["module", "=", "Vertex Bytes"]]},
+    {"dt": "Property Setter", "filters": [["module", "=", "Vertex Bytes"]]}
+]
 
 
 # include js, css files in header of web template
@@ -54,12 +114,7 @@ override_whitelisted_methods = {
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-# include js in doctype views
-doctype_js = {
-    "Company": "public/js/company_override.js",
-    "User": "public/js/user_override.js",
-    "Item": "public/js/item_override.js"
-}
+
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -95,17 +150,9 @@ doctype_js = {
 # 	"filters": "vb_app.utils.jinja_filters"
 # }
 
-# Installation
-# ------------
 
-# before_install = "vb_app.install.before_install"
-after_install = [
-    "vb_app.setup_company.run",
-    "vb_app.setup_permissions.run",
-    "vb_app.setup_item.run",
-    "vb_app.apply_property_setters.run",
-    "vb_app.setup_coa.run"
-]
+
+
 
 # Uninstallation
 # ------------
@@ -155,29 +202,7 @@ after_install = [
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
-# Document Events
-# ---------------
-# Hook on document methods and events
-doc_events = {
-    "User": {
-        "after_insert": "vb_app.user_automation.auto_create_permission",
-        "on_trash": "vb_app.user_automation.cleanup_permission_on_delete"
-    },
-    "Company": {
-        "after_insert": "vb_app.company_automation.auto_create_letterhead",
-        "on_trash": "vb_app.company_automation.clear_company_data_on_trash"
-    },
-    "Acoounting": {
-        "after_insert": "vb_app.tax_automation.auto_create_tax_templates"
-    },
-    "*": {
-        # This adds your check to every document write
-        "on_update": "vb_app.company_permission.check_company_permission",
-        "on_submit": "vb_app.company_permission.check_company_permission",
-        "on_cancel": "vb_app.company_permission.check_company_permission",
-        "on_trash":  "vb_app.company_permission.check_company_permission",
-    }
-}
+
 # Scheduled Tasks
 # ---------------
 
