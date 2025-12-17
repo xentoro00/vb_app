@@ -3,30 +3,13 @@ app_title = "Vertex Bytes"
 app_publisher = "Vertex Bytes Solution"
 app_description = "Vertex Bytes Solution"
 app_email = "erp@vertexbytes.net"
-required_apps = ["frappe/erpnext", "frappe/hrms"]
 app_license = "mit"
 
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["frappe/hrms"]
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "vb_app",
-# 		"logo": "/assets/vb_app/logo.png",
-# 		"title": "Vertex Bytes",
-# 		"route": "/vb_app",
-# 		"has_permission": "vb_app.api.permission.has_app_permission"
-# 	}
-# ]
-app_name = "vb_app"
-app_title = "Vertex Bytes App"
-app_publisher = "Vertex Bytes"
-app_description = "Custom Isolation and Reports App"
-app_email = "admin@vertexbytes.com"
-app_license = "MIT"
 
 # --- Asset Includes ---
 # qetu i kallxon cilat mi shti qe jan ne folderin /public
@@ -58,7 +41,8 @@ doc_events = {
     },
     "Company": {
         "after_insert": "vb_app.company_automation.auto_create_letterhead",
-        "on_trash": "vb_app.company_automation.clear_company_data_on_trash"
+        "on_trash": "vb_app.company_automation.clear_company_data_on_trash",
+        "on_update": "vb_app.company_automation.update_letterhead_on_change",
     },
     "Account": {
         "after_insert": "vb_app.tax_automation.auto_create_tax_templates"

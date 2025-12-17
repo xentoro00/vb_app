@@ -84,3 +84,30 @@ def clear_company_data_on_trash(doc, method):
     delete_templates("Item Tax Template", ITEM_TAX_TITLES, doc.name)
     delete_templates("Sales Taxes and Charges Template", SALES_TAX_TITLES, doc.name)
     delete_templates("Purchase Taxes and Charges Template", PURCHASE_TAX_TITLES, doc.name)
+
+def update_letterhead_on_change(doc, method):
+    """
+    Runs on Company > On Update.
+    Updates the linked Letter Head image if the Company Logo changes.
+    """
+    # Check if company_logo has changed
+    if not doc.has_value_changed("company_logo"):
+        return
+
+    # If logo is removed or changed
+    if doc.company_logo:
+        lh_name = f"{doc.company_name} Official"
+        
+        # Check if the Letter Head exists
+        if frappe.db.exists("Letter Head", lh_name):
+            try:
+                lh_doc = frappe.get_doc("Letter Head", lh_name)
+                if lh_doc.image != doc.company_logo:
+                    lh_doc.image = doc.company_logo
+                    lh_doc.save(ignore_permissions=True)
+                    frappe.msgprint(f"🔄 Updated Letter Head image for: {lh_name}")
+            except Exception as e:
+                frappe.log_error(f"Failed to update letterhead for {doc.company_name}: {str(e)}", "Company Update Error")
+        else:
+            # If it doesn't exist yet (e.g. logo added later), create it
+            auto_create_letterhead(doc, method)
