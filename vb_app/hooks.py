@@ -7,7 +7,6 @@ app_license = "mit"
 
 # Apps
 # ------------------
-
 required_apps = ["frappe/hrms"]
 
 
@@ -36,16 +35,19 @@ doctype_js = {
 # Hook on document methods and events
 doc_events = {
     "User": {
-        "after_insert": "vb_app.user_automation.auto_create_permission",
-        "on_trash": "vb_app.user_automation.cleanup_permission_on_delete"
+        "after_insert": "vb_app.automations.user_automation.auto_create_permission",
+        "on_trash": "vb_app.automations.user_automation.cleanup_permission_on_delete"
     },
     "Company": {
-        "after_insert": "vb_app.company_automation.auto_create_letterhead",
-        "on_trash": "vb_app.company_automation.clear_company_data_on_trash",
-        "on_update": "vb_app.company_automation.update_letterhead_on_change",
+        "after_insert": "vb_app.automations.company_automation.auto_create_letterhead",
+        "on_trash": "vb_app.automations.company_automation.clear_company_data_on_trash",
+        "on_update": "vb_app.automations.company_automation.update_letterhead_on_change",
     },
     "Account": {
-        "after_insert": "vb_app.tax_automation.auto_create_tax_templates"
+        "after_insert": "vb_app.automations.tax_automation.auto_create_tax_templates"
+    },
+    "Project": {
+        "validate": "my_security_app.my_security_app.security.validate_project_security"
     },
     "*": {
         # This adds your check to every document write
@@ -58,7 +60,8 @@ doc_events = {
 
 # --- API Overrides ---
 override_whitelisted_methods = {
-    "frappe.desk.query_report.run": "vb_app.report_handlers.secure_run_report"
+    "frappe.desk.query_report.run": "vb_app.report_handlers.secure_run_report",
+    "frappe.desk.search.search_link": "vb_app.security.secure_search_link"
 }
 
 # Installation
@@ -66,11 +69,11 @@ override_whitelisted_methods = {
 # --- Installation Hooks ---
 # qeto bahen execute sit bahet install-app vb_app, dmth veq 1 her.
 after_install = [
-    "vb_app.setup_company.run",
-    "vb_app.setup_permissions.run",
-    "vb_app.setup_item.run",
+    "vb_app.setup.setup_company.run",
+    "vb_app.setup.setup_permissions.run",
+    "vb_app.setup.setup_item.run",
     "vb_app.apply_property_setters.run",
-    "vb_app.setup_coa.run"
+    "vb_app.setup.setup_coa.run"
 ]
 
 # Includes in <head>
@@ -82,7 +85,73 @@ fixtures = [
     {"dt": "Custom Field", "filters": [["module", "=", "Vertex Bytes"]]},
     {"dt": "Property Setter", "filters": [["module", "=", "Vertex Bytes"]]}
 ]
+permission_query_conditions = {
+    # Accounting
+    "Sales Invoice": "vb_app.security.get_company_permission_query",
+    "Purchase Invoice": "vb_app.security.get_company_permission_query",
+    "Journal Entry": "vb_app.security.get_company_permission_query",
+    "Payment Entry": "vb_app.security.get_company_permission_query",
+    "Account": "vb_app.security.get_company_permission_query",
+    "Cost Center": "vb_app.security.get_company_permission_query",
+    "Budget": "vb_app.security.get_company_permission_query",
+    "Asset": "vb_app.security.get_company_permission_query",
+    
+    # Selling
+    "Quotation": "vb_app.security.get_company_permission_query",
+    "Sales Order": "vb_app.security.get_company_permission_query",
+    "Delivery Note": "vb_app.security.get_company_permission_query",
+    "Customer": "vb_app.security.get_company_permission_query",
+    
+    # Buying
+    "Supplier": "vb_app.security.get_company_permission_query",
+    "Purchase Order": "vb_app.security.get_company_permission_query",
+    "Purchase Receipt": "vb_app.security.get_company_permission_query",
+    "Material Request": "vb_app.security.get_company_permission_query",
+    "Request for Quotation": "vb_app.security.get_company_permission_query",
+    "Supplier Quotation": "vb_app.security.get_company_permission_query",
 
+    # Stock
+    "Item": "vb_app.security.get_company_permission_query",
+    "Stock Entry": "vb_app.security.get_company_permission_query",
+    "Delivery Trip": "vb_app.security.get_company_permission_query",
+    "Batch": "vb_app.security.get_company_permission_query",
+    "Serial No": "vb_app.security.get_company_permission_query",
+    "Warehouse": "vb_app.security.get_company_permission_query",
+    "Stock Ledger Entry": "vb_app.security.get_company_permission_query",
+
+    # HR & Payroll
+    "Employee": "vb_app.security.get_company_permission_query",
+    "Leave Application": "vb_app.security.get_company_permission_query",
+    "Expense Claim": "vb_app.security.get_company_permission_query",
+    "Salary Slip": "vb_app.security.get_company_permission_query",
+    "Payroll Entry": "vb_app.security.get_company_permission_query",
+    "Attendance": "vb_app.security.get_company_permission_query",
+    "Shift Request": "vb_app.security.get_company_permission_query",
+    "Job Offer": "vb_app.security.get_company_permission_query",
+
+    # Projects
+    "Project": "vb_app.security.get_company_permission_query",
+    "Task": "vb_app.security.get_company_permission_query",
+    "Timesheet": "vb_app.security.get_company_permission_query",
+    "Activity Cost": "vb_app.security.get_company_permission_query",
+
+    # Support
+    "Issue": "vb_app.security.get_company_permission_query",
+    "Warranty Claim": "vb_app.security.get_company_permission_query",
+    
+    # CRM
+    "Lead": "vb_app.security.get_company_permission_query",
+    "Opportunity": "vb_app.security.get_company_permission_query"
+}
+
+
+
+# # 2. For Form Views (Read Access)
+has_permission = {
+    "Project": "vb_app.security.has_project_permission"
+}
+
+# 3. For API Writes/Saves (Write Access) - ADD THIS
 
 # include js, css files in header of web template
 # web_include_css = "/assets/vb_app/css/vb_app.css"
@@ -238,7 +307,7 @@ fixtures = [
 
 # Request Events
 # ----------------
-# before_request = ["vb_app.utils.before_request"]
+# before_request = ["vb_app.middleware.force_company_restriction"]
 # after_request = ["vb_app.utils.after_request"]
 
 # Job Events

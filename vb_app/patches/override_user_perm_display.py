@@ -49,11 +49,10 @@ def execute():
         "doctype_or_field": "DocField",
         "fieldname": "role_profile_name",
         "property": "permlevel",
-        "value": "2",
-        "property_type": "int",
+        "value": 2,             # <--- CHANGED: Passed as Integer
+        "property_type": "Int", # <--- CHANGED: Capital 'I' is safer
         "is_system_generated": 0
     })
-
     # ==================================================================
     # PART 3: ROLE PERMISSIONS (User Admin Rules)
     # ==================================================================
