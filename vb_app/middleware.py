@@ -21,9 +21,24 @@ def force_company_restriction():
     # Most Desk API calls (get_list, reportview, search_link) pass 'doctype'
     doctype = frappe.form_dict.get("doctype")
     
+    # [NEW] FIX: List of System DocTypes that must NEVER be filtered by Company
+    # Otherwise, the UI breaks because standard reports/dashboards disappear.
+    SYSTEM_DOCTYPES = [
+        "Report",
+        "Dashboard",
+        "Dashboard Chart",
+        "Number Card",
+        "Page",
+        "Workspace",
+        "DocType",
+        "Print Format",
+        "Role",
+        "User"
+    ]
+    
     # If we don't know the DocType, or if the DocType doesn't have a 'company' field,
     # we MUST stop. Otherwise, we break system pages (like User, Role, etc).
-    if not doctype:
+    if not doctype or doctype in SYSTEM_DOCTYPES:
         return
 
     try:

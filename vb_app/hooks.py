@@ -61,7 +61,7 @@ doc_events = {
 # --- API Overrides ---
 override_whitelisted_methods = {
     "frappe.desk.query_report.run": "vb_app.report_handlers.secure_run_report",
-    "frappe.desk.search.search_link": "vb_app.security.secure_search_link"
+    # "frappe.desk.search.search_link": "vb_app.security.secure_search_link"
 }
 
 # Installation
@@ -85,71 +85,71 @@ fixtures = [
     {"dt": "Custom Field", "filters": [["module", "=", "Vertex Bytes"]]},
     {"dt": "Property Setter", "filters": [["module", "=", "Vertex Bytes"]]}
 ]
-permission_query_conditions = {
-    # Accounting
-    "Sales Invoice": "vb_app.security.get_company_permission_query",
-    "Purchase Invoice": "vb_app.security.get_company_permission_query",
-    "Journal Entry": "vb_app.security.get_company_permission_query",
-    "Payment Entry": "vb_app.security.get_company_permission_query",
-    "Account": "vb_app.security.get_company_permission_query",
-    "Cost Center": "vb_app.security.get_company_permission_query",
-    "Budget": "vb_app.security.get_company_permission_query",
-    "Asset": "vb_app.security.get_company_permission_query",
+# permission_query_conditions = {
+#     # Accounting
+#     "Sales Invoice": "vb_app.security.get_company_permission_query",
+#     "Purchase Invoice": "vb_app.security.get_company_permission_query",
+#     "Journal Entry": "vb_app.security.get_company_permission_query",
+#     "Payment Entry": "vb_app.security.get_company_permission_query",
+#     "Account": "vb_app.security.get_company_permission_query",
+#     "Cost Center": "vb_app.security.get_company_permission_query",
+#     "Budget": "vb_app.security.get_company_permission_query",
+#     "Asset": "vb_app.security.get_company_permission_query",
     
-    # Selling
-    "Quotation": "vb_app.security.get_company_permission_query",
-    "Sales Order": "vb_app.security.get_company_permission_query",
-    "Delivery Note": "vb_app.security.get_company_permission_query",
-    "Customer": "vb_app.security.get_company_permission_query",
+#     # Selling
+#     "Quotation": "vb_app.security.get_company_permission_query",
+#     "Sales Order": "vb_app.security.get_company_permission_query",
+#     "Delivery Note": "vb_app.security.get_company_permission_query",
+#     "Customer": "vb_app.security.get_company_permission_query",
     
-    # Buying
-    "Supplier": "vb_app.security.get_company_permission_query",
-    "Purchase Order": "vb_app.security.get_company_permission_query",
-    "Purchase Receipt": "vb_app.security.get_company_permission_query",
-    "Material Request": "vb_app.security.get_company_permission_query",
-    "Request for Quotation": "vb_app.security.get_company_permission_query",
-    "Supplier Quotation": "vb_app.security.get_company_permission_query",
+#     # Buying
+#     "Supplier": "vb_app.security.get_company_permission_query",
+#     "Purchase Order": "vb_app.security.get_company_permission_query",
+#     "Purchase Receipt": "vb_app.security.get_company_permission_query",
+#     "Material Request": "vb_app.security.get_company_permission_query",
+#     "Request for Quotation": "vb_app.security.get_company_permission_query",
+#     "Supplier Quotation": "vb_app.security.get_company_permission_query",
 
-    # Stock
-    "Item": "vb_app.security.get_company_permission_query",
-    "Stock Entry": "vb_app.security.get_company_permission_query",
-    "Delivery Trip": "vb_app.security.get_company_permission_query",
-    "Batch": "vb_app.security.get_company_permission_query",
-    "Serial No": "vb_app.security.get_company_permission_query",
-    "Warehouse": "vb_app.security.get_company_permission_query",
-    "Stock Ledger Entry": "vb_app.security.get_company_permission_query",
+#     # Stock
+#     "Item": "vb_app.security.get_company_permission_query",
+#     "Stock Entry": "vb_app.security.get_company_permission_query",
+#     "Delivery Trip": "vb_app.security.get_company_permission_query",
+#     "Batch": "vb_app.security.get_company_permission_query",
+#     "Serial No": "vb_app.security.get_company_permission_query",
+#     "Warehouse": "vb_app.security.get_company_permission_query",
+#     "Stock Ledger Entry": "vb_app.security.get_company_permission_query",
 
-    # HR & Payroll
-    "Employee": "vb_app.security.get_company_permission_query",
-    "Leave Application": "vb_app.security.get_company_permission_query",
-    "Expense Claim": "vb_app.security.get_company_permission_query",
-    "Salary Slip": "vb_app.security.get_company_permission_query",
-    "Payroll Entry": "vb_app.security.get_company_permission_query",
-    "Attendance": "vb_app.security.get_company_permission_query",
-    "Shift Request": "vb_app.security.get_company_permission_query",
-    "Job Offer": "vb_app.security.get_company_permission_query",
+#     # HR & Payroll
+#     "Employee": "vb_app.security.get_company_permission_query",
+#     "Leave Application": "vb_app.security.get_company_permission_query",
+#     "Expense Claim": "vb_app.security.get_company_permission_query",
+#     "Salary Slip": "vb_app.security.get_company_permission_query",
+#     "Payroll Entry": "vb_app.security.get_company_permission_query",
+#     "Attendance": "vb_app.security.get_company_permission_query",
+#     "Shift Request": "vb_app.security.get_company_permission_query",
+#     "Job Offer": "vb_app.security.get_company_permission_query",
 
-    # Projects
-    "Project": "vb_app.security.get_company_permission_query",
-    "Task": "vb_app.security.get_company_permission_query",
-    "Timesheet": "vb_app.security.get_company_permission_query",
-    "Activity Cost": "vb_app.security.get_company_permission_query",
+#     # Projects
+#     "Project": "vb_app.security.get_company_permission_query",
+#     "Task": "vb_app.security.get_company_permission_query",
+#     "Timesheet": "vb_app.security.get_company_permission_query",
+#     "Activity Cost": "vb_app.security.get_company_permission_query",
 
-    # Support
-    "Issue": "vb_app.security.get_company_permission_query",
-    "Warranty Claim": "vb_app.security.get_company_permission_query",
+#     # Support
+#     "Issue": "vb_app.security.get_company_permission_query",
+#     "Warranty Claim": "vb_app.security.get_company_permission_query",
     
-    # CRM
-    "Lead": "vb_app.security.get_company_permission_query",
-    "Opportunity": "vb_app.security.get_company_permission_query"
-}
+#     # CRM
+#     "Lead": "vb_app.security.get_company_permission_query",
+#     "Opportunity": "vb_app.security.get_company_permission_query"
+# }
 
 
 
 # # 2. For Form Views (Read Access)
-has_permission = {
-    "Project": "vb_app.security.has_project_permission"
-}
+# has_permission = {
+#     "Project": "vb_app.security.has_project_permission"
+# }
 
 # 3. For API Writes/Saves (Write Access) - ADD THIS
 
