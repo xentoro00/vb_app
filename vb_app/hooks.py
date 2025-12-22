@@ -220,6 +220,11 @@ fixtures = [
 
 # before_app_install = "vb_app.utils.before_app_install"
 # after_app_install = "vb_app.utils.after_app_install"
+after_app_install = "vb_core.overrides.disable_updates.disable_frappe_update_checks"
+
+app_include_python = [
+	"vb_core.overrides.disable_updates"
+]
 
 # Integration Cleanup
 # -------------------
